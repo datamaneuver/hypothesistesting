@@ -1,4 +1,4 @@
-hypothesistesting <- function(data,vec=0,t)
+hypothesis <- function(data,vec=0,t)
 {
   response=data[,t] #storing the target variable
   options(warn=-1)
@@ -52,8 +52,8 @@ hypothesistesting <- function(data,vec=0,t)
         test_c[count_c]<-chisq.test(tbl)$p.value
       }
   }
-  print('T-test for variables:')
-  print(data.frame(Variable=c(name_t),Target=c(name_k),P_value=c(test_n),Result=c(result_n)))
-  print('Chisq-test for variables with target:')
-  print(data.frame(Predictor=c(name_c),Target=c(name_r),P_value=c(test_c)))
+  k = data.frame(Variable=c(name_t),Target=c(name_k),P_value=c(test_n),Result=c(result_n))
+  write.xlsx(k, file="hypothesis_testing.xlsx", sheetName="t-test",append=TRUE, row.names=FALSE)
+  l = data.frame(Predictor=c(name_c),Target=c(name_r),P_value=c(test_c))
+  write.xlsx(l, file="hypothesis_testing.xlsx", sheetName="chisquare-test",append=TRUE, row.names=FALSE)
 }
