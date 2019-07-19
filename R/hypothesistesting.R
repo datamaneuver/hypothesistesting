@@ -1,4 +1,4 @@
-hypothesis <- function(data,vec=0,t)
+hypothesistesting <- function(data,vec=0,t)
 {
   response=data[,t] #storing the target variable
   options(warn=-1)
